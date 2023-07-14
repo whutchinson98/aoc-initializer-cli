@@ -16,7 +16,8 @@ fn get_config_path() -> String {
 
 #[cfg(not(debug_assertions))]
 fn get_config_path() -> String {
-    r#"~/.config/aoc-initializer/config.json"#.to_string()
+    let home = env::var("HOME").expect("You do not have a $HOME env var");
+    return home + "/.config/aoc-initializer/config.json";
 }
 
 #[derive(Serialize, Deserialize)]
