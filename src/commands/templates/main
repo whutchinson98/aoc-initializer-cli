@@ -1,0 +1,47 @@
+use std::fs;
+
+fn main() {
+    let contents =
+        fs::read_to_string("./input.txt").expect("Should have been able to read the file");
+
+    let mut contents: Vec<&str> = contents.split("\n").collect();
+
+    contents.pop();
+
+    println!("Part 1 {}", part_one(&contents));
+    println!("Part 2 {}", part_two(&contents));
+}
+
+fn part_one(content: &Vec<&str>) -> usize {
+    return 0;
+}
+
+fn part_two(content: &Vec<&str>) -> usize {
+    return 0;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{part_one, part_two};
+
+    #[test]
+    fn part_one_test() {
+        let contents = "";
+
+        let mut contents: Vec<&str> = contents.split("\n").collect();
+
+        contents.pop();
+
+        assert_eq!(part_one(&contents), 0);
+    }
+
+    #[test]
+    fn part_two_test() {
+        let contents = "";
+        let mut contents: Vec<&str> = contents.split("\n").collect();
+
+        contents.pop();
+
+        assert_eq!(part_two(&contents), 0);
+    }
+}
