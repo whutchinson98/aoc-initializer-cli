@@ -25,7 +25,7 @@ pub async fn init_challenge(day: &i32) -> Result<(), String> {
 
     create_cargo_project(day);
 
-    let res = get_input(&aoc_session_id, &day).await;
+    let res = get_input(&aoc_session_id, &config.year, &day).await;
 
     if res.is_err() {
         panic!("Unable to get input from Advent of Code");
@@ -42,15 +42,15 @@ pub async fn init_challenge(day: &i32) -> Result<(), String> {
 fn create_cargo_project(day: &i32) {
     Command::new("sh")
         .arg("-c")
-        .arg(format!("cargo init q{day}", day = day))
+        .arg(format!("cargo init --vcs=none q{day}", day = day))
         .output()
         .expect("error executing cargo init");
 }
 
-async fn get_input(aoc_session_id: &str, day: &i32) -> Result<String, Error> {
+async fn get_input(aoc_session_id: &str, year: &i32, day: &i32) -> Result<String, Error> {
     let request_url = format!(
         "{request_url}{day}/input",
-        request_url = "https://adventofcode.com/2022/day/",
+        request_url = format!("https://adventofcode.com/{year}/day/", year=year),
         day = day
     );
 
